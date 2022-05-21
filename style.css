@@ -1,0 +1,22 @@
+/* Remove padding and margin */ 
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #111;
+}
+.container {
+  display: flex;
+  width: 32em;
+  height: 32em;
+  background-color: #777;
+}
+.cell {
+  float: left;
+  width: 2em;
+  height: 2em;
+  background-color: #efefef;
+}
+.cell:hover {
+  background-color: gold;
+}
