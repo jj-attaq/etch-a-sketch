@@ -6,17 +6,16 @@
   background-color: #111;
 }
 .container {
-  display: flex;
-  width: 32em;
-  height: 32em;
+  width: 640px;
+  height: 640px;
   background-color: #777;
 }
 .cell {
   float: left;
-  width: 2em;
-  height: 2em;
+  width: 40px;
+  height: 40px;
   background-color: #efefef;
 }
 .cell:hover {
-  background-color: gold;
+  background-color: #333;
 }
