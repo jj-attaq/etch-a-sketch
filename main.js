@@ -1,7 +1,24 @@
 const container = document.querySelector('.container');
 const row = [],
-      grid = [],
-      count = 16; // make user input later
+      grid = [];
+createNewGrid();
+function createNewGrid() {
+  const button = document.querySelector('.button');
+  button.addEventListener('click', () => {
+    count = +prompt('Please choose how many cells you would like per side in the drawing grid:' );
+    fillGrid();
+    drawOnHover(); 
+    determineCellSize();
+  })
+}
+function determineCellSize() {
+  const cells = document.querySelectorAll('.cell');
+  const cellSize = `${960/count}px`;
+  cells.forEach((cell) => {
+    cell.style.width = cellSize;
+    cell.style.height = cellSize;
+  })
+}
 function fillRowArray() {
   for(let i = 0; i < count; i++) {
     const cell = document.createElement('div');
@@ -23,7 +40,7 @@ function fillGrid() {
     }
   }
 }
-function addColor() {  
+function drawOnHover() {  
   const cells = document.querySelectorAll('.cell');
   cells.forEach((cell) => {
     cell.addEventListener('mouseover', (event) => {
@@ -31,5 +48,3 @@ function addColor() {
     })
   })
 }
-fillGrid();
-addColor();
