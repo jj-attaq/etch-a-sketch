@@ -1,15 +1,28 @@
-const container = document.querySelector('.container');
-const row = [],
+const container = document.querySelector('.container'),
+      fragment = document.createDocumentFragment(),
+      row = [],
       grid = [];
 createNewGrid();
 function createNewGrid() {
   const button = document.querySelector('.button');
   button.addEventListener('click', () => {
-    count = +prompt('Please choose how many cells you would like per side in the drawing grid:' );
+    removeOldGrid();
+    count = prompt('Please choose how many cells you would like per side in the drawing grid:' );
     fillGrid();
-    drawOnHover(); 
     determineCellSize();
+    drawOnHover(); 
   })
+}
+function removeOldGrid() {
+  while(row.length > 0) {
+    row.pop();
+  }
+  while(grid.length > 0) {
+    grid.pop();
+  }
+  while(container.lastElementChild) {
+    container.lastChild.remove();
+  }
 }
 function determineCellSize() {
   const cells = document.querySelectorAll('.cell');
@@ -36,8 +49,9 @@ function fillGrid() {
   for (let i = 0; i < grid.length; i++) {
     fillRowArray();
     for (let j = 0; j < grid[i].length; j++) { 
-      container.appendChild(grid[i][j]);
+      fragment.appendChild(grid[i][j]);
     }
+    container.appendChild(fragment);
   }
 }
 function drawOnHover() {  
