@@ -7,11 +7,17 @@ function createNewGrid() {
   const button = document.querySelector('.button');
   button.addEventListener('click', () => {
     removeOldGrid();
-    count = prompt('Please choose how many cells you would like per side in the drawing grid:' );
+    runCountPrompt();
     fillGrid();
     determineCellSize();
     drawOnHover(); 
   })
+}
+function runCountPrompt() {
+  count = prompt('Please choose how many cells you would like per side in the drawing grid:' );
+  if (count > 100) {
+    return alert('Please choose a number below 100.');
+  }
 }
 function removeOldGrid() {
   while(row.length > 0) {
