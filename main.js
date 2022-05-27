@@ -1,7 +1,9 @@
+'use strict';
 const container = document.querySelector('.container'),
       fragment = document.createDocumentFragment(),
       row = [],
       grid = [];
+let count = 0;
 createNewGrid();
 function createNewGrid() {
   const button = document.querySelector('.button');
@@ -53,9 +55,17 @@ function drawOnHover() {
   const cells = document.querySelectorAll('.cell');
   cells.forEach((cell) => {
     cell.addEventListener('mouseover', (event) => {
-      event.target.style.backgroundColor = 'black';
+      event.target.style.backgroundColor = `${randomColor()}`;
     })
   })
+}
+function randomColor() {
+  const color = [];
+  for (let i = 0; i < 3; i++) {
+    const random = Math.floor(Math.random() * 255);
+    color.push(random);
+  }
+  return `rgb(${color.join(', ')})`;
 }
 function fillRowArray() {
   for(let i = 0; i < count; i++) {
